@@ -53,17 +53,18 @@ public class WeekdayCalculator {
         total = yy + total;
         total = dd + total;
         total = total + month_offset(mm);
-        if (is_leap(yyyy) && mm == 01) {
+        if (is_leap(yyyy) && mm == 1) {
             total = (total - 1) / 7;
-            
-        } else if (is_leap(yyyy) && mm == 02) {
+
+        } else if (is_leap(yyyy) && mm == 2) {
             total = (total - 1) / 7;
-            
+
         } else {
             total = total / 7;
-            
+
         }
-        date = weekday_name(total) + ", " + month_name(mm) + dd + ", " + yyyy;
+
+        date = weekday_name(total) + ", " + month_name(mm) + " " + dd + ", " + yyyy;
 
         return date;
     }
@@ -73,23 +74,22 @@ public class WeekdayCalculator {
         String[] monthNames = {
             "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
         };
-        return monthNames[month];
+        return monthNames[--month];
     }
 
     public static int month_offset(int month) {
         int result;
         switch (month) {
             case 1:
-            case 10:
                 result = 1;
                 break;
             case 2:
+                result = 4;
+                break;
             case 3:
-            case 11:
                 result = 4;
                 break;
             case 4:
-            case 7:
                 result = 0;
                 break;
             case 5:
@@ -98,10 +98,21 @@ public class WeekdayCalculator {
             case 6:
                 result = 5;
                 break;
+            case 7:
+                result = 0;
+                break;
             case 8:
                 result = 3;
                 break;
             case 9:
+                result = 6;
+                break;
+            case 10:
+                result = 1;
+                break;
+            case 11:
+                result = 4;
+                break;
             case 12:
                 result = 6;
                 break;
